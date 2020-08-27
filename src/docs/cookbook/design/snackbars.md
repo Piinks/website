@@ -36,6 +36,9 @@ The [`Scaffold`][] widget, from the [material library][],
 creates this visual structure and ensures that important
 widgets don't overlap.
 
+The [`ScaffoldMessenger`][] widget, also from the [material library][],
+manages `SnackBar`s, delivering it to descendant `Scaffolds` to layout.
+
 <!-- skip -->
 ```dart
 Scaffold(
@@ -49,14 +52,14 @@ Scaffold(
 ## 2. Display a `SnackBar`
 
 With the `Scaffold` in place, display a `SnackBar`.
-First, create a `SnackBar`, then display it using the `Scaffold`.
+First, create a `SnackBar`, then display it using the `ScaffoldMessenger`.
 
 <!-- skip -->
 ```dart
 final snackBar = SnackBar(content: Text('Yay! A SnackBar!'));
 
-// Find the Scaffold in the widget tree and use it to show a SnackBar.
-Scaffold.of(context).showSnackBar(snackBar);
+// Find the ScaffoldMessenger in the widget tree and use it to show a SnackBar on your Scaffold.
+ScaffoldMessenger.of(context).showSnackBar(snackBar);
 ```
 
 ## 3. Provide an optional action
@@ -127,9 +130,9 @@ class SnackBarPage extends StatelessWidget {
             ),
           );
 
-          // Find the Scaffold in the widget tree and use
-          // it to show a SnackBar.
-          Scaffold.of(context).showSnackBar(snackBar);
+          // Find the ScaffoldMessenger in the widget tree and use
+          // it to show a SnackBar on the Scaffold.
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
         child: Text('Show SnackBar'),
       ),
@@ -145,5 +148,6 @@ class SnackBarPage extends StatelessWidget {
 
 [Gestures]: /docs/cookbook#gestures
 [`Scaffold`]: {{site.api}}/flutter/material/Scaffold-class.html
+[`ScaffoldMessenger`]: {{site.api}}/flutter/material/ScaffoldMessenger-class.html
 [`SnackBar`]: {{site.api}}/flutter/material/SnackBar-class.html
 [material library]: {{site.api}}/flutter/material/material-library.html
